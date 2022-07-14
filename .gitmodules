@@ -1,2 +1,11 @@
 [submodule "https://github.com/alexisMartinez1235/Supermarket-app-Frontend"]
 	url = Frontend
+[submodule "Backend"]
+	path = Backend
+	url = git@github.com:alexisMartinez1235/Pintent-Backend.git
+[submodule "Frontend"]
+	path = Frontend
+	url = git@github.com:alexisMartinez1235/Pintent-Frontend.git
+[submodule "Monitor"]
+	path = Monitor
+	url = git@github.com:alexisMartinez1235/Pintent-Monitor.git
