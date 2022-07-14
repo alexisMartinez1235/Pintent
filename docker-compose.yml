@@ -28,7 +28,6 @@ services:
       supermarket_app:
     ports:
       - '3306:3306'
-      # - '3306'
     secrets:
       - mysql_root_pw
       - mysql_db_pw
