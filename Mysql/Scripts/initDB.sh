@@ -31,17 +31,6 @@ init(){
   /entrypoint.sh mysqld &
   PidEntrypoint=$(echo "$!")
 
-  # ! deprecated
-  #region delete
-  # if [ -e $FILE ]; then
-  #   rm $FILE
-  # fi
-  # touch $FILE
-  # chmod 644 $FILE
-
-  # configMysqlDev "loginfordev" "localhost" "${MYSQL_USER}" "${MYSQL_PASSWORD_FILE}"
-  # configMysqlDev "loginroot" "localhost" "root" "${MYSQL_ROOT_PASSWORD_FILE}"
-  #endregion
   # TODO : improve algorithm
   while [[ "$codeSuccess" != "28000" && "$hasSlepped" == "false" ]]; do
     codeSuccess=$( mysql 2>&1 | cut -d" " -f 3 | cut -c 2-6 )

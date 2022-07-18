@@ -1,13 +1,5 @@
 version: '3.9'
 services:
-
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - '8080:8080'
-  #   networks:
-  #     - supermarket_app
   mysql:
     build:
       args:
@@ -39,7 +31,17 @@ services:
       # - ./Mysql/Database:/usr/src/******/Database
 
     working_dir: /usr/src/database
-     
+    
+  # couchbase:
+  #   image: couchbase:7.1.1
+  #   ports:
+  #     - 8091-8097:8091-8097
+  #     - 11210:11210
+  #     - 11207:11207
+  #     - 18091-18095:18091-18095
+  #     - 18096:18096
+  #     - 18097:18097
+    
   api:
     build:
       args:
