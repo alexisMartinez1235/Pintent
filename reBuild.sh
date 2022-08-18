@@ -2,7 +2,7 @@
 # ---------------Parameters------------------
 # $1 : re-create password
 # $2 : force delete mysql installation folder 
-
+# $3 : build monitor
 
 DOCKER_BUILDKIT=1
 source ./.env
@@ -20,6 +20,7 @@ init() {
   # ---------------Parameters------------------
   # $1 : re-create password
   # $2 : force delete mysql installation folder 
+  # $3 : build monitor default: false
 
   local ReCreatePw=$1
   local ReCreateInstallation=$2
@@ -50,15 +51,26 @@ init() {
   mkdir -p ./VsCodeConfigFolders/Frontend
   mkdir -p ./VsCodeConfigFolders/Backend
 
-  docker-compose -f "docker-compose.yml" up -d --build
-  sh backupDev.sh
-  cd Monitor
-  docker-compose -f "docker-compose.yml" up -d --build
+  docker-compose -f docker-compose.yml up -d --build
+  docker-compose -f docker-compose-db.yml up -d --build
+  
+  # sh backupDev.sh
+
+  if [[ "$3" ]]
+  then
+    cd Monitor
+    docker-compose -f docker-compose.yml up -d --build
+  fi
 }
 
 if [[ "$1" && "$2" ]]
 then
-  init $1 $2
+  if [[ "$3" ]]
+  then
+    init $1 $2 $3
+  else
+    init $1 $2
+  fi
 fi
 
 # recommended in mysql dev

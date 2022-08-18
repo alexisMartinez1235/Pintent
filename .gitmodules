@@ -7,3 +7,5 @@
 [submodule "Monitor"]
 	path = Monitor
 	url = git@github.com:alexisMartinez1235/Pintent-Monitor.git
+[submodule "Backend/"]
+	url = git@github.com:alexisMartinez1235/Pintent-Backend.git

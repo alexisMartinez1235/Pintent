@@ -17,7 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_pw
       MYSQL_USER: ${MYSQL_USER}
     networks:
-      supermarket_app:
+      pintent_app:
     ports:
       - '3306:3306'
     secrets:
@@ -31,17 +31,7 @@ services:
       # - ./Mysql/Database:/usr/src/******/Database
 
     working_dir: /usr/src/database
-    
-  # couchbase:
-  #   image: couchbase:7.1.1
-  #   ports:
-  #     - 8091-8097:8091-8097
-  #     - 11210:11210
-  #     - 11207:11207
-  #     - 18091-18095:18091-18095
-  #     - 18096:18096
-  #     - 18097:18097
-    
+  
   api:
     build:
       args:
@@ -59,7 +49,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
     # mem_limit: 2500m
     networks:
-      supermarket_app:
+      pintent_app:
     ports:
       - 8000:8000 # server port
       - 9228:9228 # vscode port
@@ -70,7 +60,7 @@ services:
     volumes:
       - nodeJSVSConfig:/home/node/.vscode-server:rw
       - ./Backend:/var/app/backend
-      - node_modules_api_SupermarketApp:/var/app/backend/node_modules
+      - node_modules_api_PintentApp:/var/app/backend/node_modules
 
     working_dir: /var/app/backend
     # command: npm start
@@ -92,7 +82,7 @@ services:
     links:
       - api
     networks:
-      supermarket_app:
+      pintent_app:
     ports:
       - 3000:3000 # client port
       - 9229:9229 # vscode port
@@ -101,7 +91,7 @@ services:
       - reactVSConfig:/home/node/.vscode-server:rw
       - ./Frontend:/var/app/frontend
       # - ./Backend:/var/app/backend
-      - node_modules_cli_SupermarketApp:/var/app/frontend/node_modules
+      - node_modules_cli_PintentApp:/var/app/frontend/node_modules
     # restart: always
     
     working_dir: /var/app/frontend
@@ -113,13 +103,13 @@ secrets:
     file: ./Mysql/Passwords/${MYSQL_PW_ROOT_FILE}
 
 networks:
-  supermarket_app:
+  pintent_app:
     driver: bridge
-    name: supermarket_app
+    name: pintent_app
 
 volumes:
-  node_modules_api_SupermarketApp:
-  node_modules_cli_SupermarketApp:
+  node_modules_api_PintentApp:
+  node_modules_cli_PintentApp:
   reactVSConfig:
   mysqlVSConfig:
   nodeJSVSConfig:

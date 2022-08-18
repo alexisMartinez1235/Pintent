@@ -13,3 +13,4 @@ VsCodeConfigFolders/
 Editor/
 .docker-compose-dev.yml
 backupDev.sh
+lastBackup.txt
