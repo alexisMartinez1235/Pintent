@@ -44,6 +44,7 @@ services:
       - mysql
     environment:
       CHOKIDAR_USEPOLLING: 'true'
+      NODE_ENV: ${MODE_NODE_SERVER}
       MYSQL_DB: ${MYSQL_DATABASE}
       MYSQL_PW: /run/secrets/mysql_db_pw
       MYSQL_USER: ${MYSQL_USER}

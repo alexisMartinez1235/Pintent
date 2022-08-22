@@ -11,9 +11,10 @@ services:
 
   redis:
     container_name: redis
-    image: redis:alpine
+    # image: redis:alpine
+    image: redis/redis-stack
     command: redis-server
-          /usr/local/etc/redis/redis.conf
+      /usr/local/etc/redis/redis.conf
           --requirepass jiqopvnzuwng
     ports:
       - "6379:6379"
